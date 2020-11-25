@@ -1,0 +1,49 @@
+
+.root {
+     -fx-background-image: url("background.png");
+
+}
+
+#welcome-text {
+    -fx-font-size: 45px;
+    -fx-font-family: "Arial";
+    -fx-fill: white;
+}
+
+#user-name {
+    -fx-font-size: 20px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: "#4d4b4d";
+}
+
+#butt {
+    -fx-border-radius: 43;
+    -fx-background-radius: 43;
+    -fx-font-size: 35;
+    -fx-background-color:"#ae59a6";
+    -fx-text-fill: "white";
+}
+
+#field {
+    -fx-border-color: white white "#4d4b4d" white;
+    -fx-background-color: -fx-control-inner-background;
+}
+
+
+#reg {
+     -fx-border-color:  "#dc98d6"  "#dc98d6" white "#dc98d6";
+    -fx-background-color:"#dc98d6" ;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: "white";
+
+}
+#butt:hover {
+-fx-background-color: white;
+-fx-text-fill: "#ae59a6";
+-fx-border-color: "#ae59a6" ;
+}
+#reg:hover {
+-fx-border-color: white white white white;
+}
+

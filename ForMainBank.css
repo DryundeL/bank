@@ -1,0 +1,31 @@
+    .root {
+        -fx-background-image: url("background2.png");
+
+    }
+
+
+    #hello {
+        -fx-font-size: 30px;
+        -fx-font-family: "Arial";
+        -fx-fill: white;
+        -fx-text-alignment: center;
+        }
+
+
+    #butt1 {
+        -fx-border-radius: 50;
+        -fx-background-radius: 50;
+        -fx-font-size: 35;
+        -fx-background-color:"white";
+        -fx-text-fill: "black";
+    }
+    #butt1:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    }
+
+    /*@font-face {
+            font-family: Название семейста;
+            src: url("Название шрифта.otf");
+            }*/
