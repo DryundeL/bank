@@ -49,3 +49,12 @@
         -fx-faint-focus-color: -fx-control-inner-background ;*/
 
 }
+#arrow:hover {
+-fx-background-color: white;
+-fx-text-fill: "b295c1";
+-fx-border-color: "b295c1" ;
+}
+
+#avtor:hover {
+-fx-border-color: white white white white;
+}
