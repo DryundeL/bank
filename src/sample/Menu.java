@@ -10,11 +10,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
+    private static TextField userTextField = new TextField();
+    private static PasswordField pwBox = new PasswordField();
+    private static PasswordField pwBox2 = new PasswordField();
+    private static Button arrow = new Button("→");
     private static Stage primaryStage = new Stage();
-    private static String name, pass;
+    private static String name = userTextField.getText(), pass = pwBox.getText();
+
     private static void Alert1() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
@@ -36,6 +45,7 @@ public class Menu {
 
         alert.showAndWait();
     }
+
     private static void Alert3() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
@@ -49,7 +59,7 @@ public class Menu {
 
 
     //Первая ФОРМА
-    public static void strtWin(){
+    public static void strtWin() {
         //Первая форма
         GridPane first = new GridPane();  // создание Grid для размтки эл-ов
         // grid.setGridLinesVisible(true); // видна/не видна Grid
@@ -76,15 +86,14 @@ public class Menu {
         primaryStage.getOnHidden();
 
 
-        btn1.setOnAction(event->Atuoriz());
-
+        btn1.setOnAction(event -> Atuoriz());
 
 
     }
 
 
     //ВТОРАЯ ФОРМА
-    public static void Atuoriz(){
+    public static void Atuoriz() {
         //2 форма
         GridPane grid = new GridPane();   //создание сетки для разметки формы
         // grid.setGridLinesVisible(true);  //видна/не видна
@@ -142,7 +151,7 @@ public class Menu {
         scene.getStylesheets().add(0, "file:ForButtons.css"); //подключение CSS
         primaryStage.show();
 
-        reg.setOnAction(event-> r3g());
+        reg.setOnAction(event -> r3g());
     }
 
 
@@ -178,7 +187,7 @@ public class Menu {
             grid.add(userName, 0, 14);//добавляем текст в Grid
 
             //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
-            TextField userTextField = new TextField();
+
             userTextField.setId("field");
             grid.add(userTextField, 0, 15);
             name = userTextField.getText();
@@ -190,7 +199,7 @@ public class Menu {
             grid.add(pw, 0, 19);
 
             //EDIT "ВВОД ПАРОЛЬ"
-            PasswordField pwBox = new PasswordField();
+
             pwBox.setId("field");
             grid.add(pwBox, 0, 20);
             pass = pwBox.getText();
@@ -201,7 +210,7 @@ public class Menu {
             grid.add(pwret, 0, 24);
 
             //EDIT "ПОВТОР ПАРОЛЬ"
-            PasswordField pwBox2 = new PasswordField();
+
             pwBox2.setId("field");
             grid.add(pwBox2, 0, 25);
 
@@ -222,7 +231,7 @@ public class Menu {
 
 
             //КНОПУЛЕЧКА "→"
-            Button arrow = new Button("→");
+
             HBox hbBtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
             arrow.setId("arrow");
             hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -237,21 +246,19 @@ public class Menu {
             scene.getStylesheets().add(0, "file:Registration.css"); //подключение CSS
             primaryStage.show();
 
-            if (pwBox.getText() != pwBox2.getText()) {
-                arrow.setOnAction(event -> Alert3());
-            } else {
-                fw.write(name + " " + pass + " ");
-                arrow.setOnAction(event -> Alert1());
-            }
-            avtor.setOnAction(event -> Atuoriz());
 
+            avtor.setOnAction(event -> Atuoriz());
+            arrow.setOnAction(event -> backend());
         } catch (Exception ex) {
             ex.getMessage();
         }
     }
-    public static void backend(){
-        //взять из работы романа проверку логина и пароля
-        // Сама работа на рабочем столе под названием Лабоант - Ассистент 
-    }
 
+    public static void backend() {
+        //взять из работы романа проверку логина и пароля
+        // Сама работа на рабочем столе под названием Лабоант - Ассистент
+        if (pwBox.getText() != pwBox2.getText()) {
+            arrow.setOnAction(event -> Alert3());
+        }
+    }
 }
