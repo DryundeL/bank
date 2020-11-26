@@ -1,0 +1,34 @@
+.root {
+     -fx-background-image: url("back.jpeg");
+
+}
+
+#text {
+    -fx-font-size: 30px;
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+}
+
+#admin{
+     -fx-font-size: 20px;
+     -fx-font-family: "Arial";
+     -fx-text-fill: white;
+}
+
+
+#functions{
+      -fx-border-radius: 50;
+      -fx-background-radius: 50;
+      -fx-font-size: 20;
+      -fx-background-color:"#523b66";
+      -fx-text-fill: "white";
+      -fx-font-family:"Arial";
+
+}
+
+#functions:hover {
+    -fx-background-color: white;
+    -fx-text-fill: "#523b66";
+     -fx-border-color: "#523b66" ;
+}
