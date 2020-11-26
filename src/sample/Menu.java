@@ -162,7 +162,7 @@ public class Menu {
 
     //ТРЕТЬЯ ФОРМА МЕНЮ
     public static void r3g() {
-        try (FileWriter fw = new FileWriter("C://reg/reg.txt", true)) {
+        try (FileWriter fw = new FileWriter("reg.txt", true)) {
 
 
             GridPane grid = new GridPane();   //создание сетки для разметки формы
