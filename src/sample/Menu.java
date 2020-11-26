@@ -251,7 +251,7 @@ public class Menu {
 
 
             avtor.setOnAction(event -> Atuoriz());
-            arrow.setOnAction(event -> AMenu());
+            arrow.setOnAction(event -> backend());
         } catch (Exception ex) {
             ex.getMessage();
         }
@@ -338,6 +338,9 @@ public class Menu {
         // Сама работа на рабочем столе под названием Лабоант - Ассистент
         if (pwBox.getText() != pwBox2.getText()) {
             arrow.setOnAction(event -> Alert3());
+        }
+        else{
+            arrow.setOnAction(event->AMenu());
         }
     }
 }
