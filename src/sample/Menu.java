@@ -49,8 +49,16 @@ public class Menu {
         switch (autorizeme.CurrentType) {
             case "1": primaryStage.toBack();
                 Worker.AMenu(); break; //запуск меню сотрудника
-            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); alert.showAndWait(); break;
-            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); alert.showAndWait(); break;
+            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); alert.showAndWait();
+                primaryStage.toBack();
+                FizFace.FFMenu();
+            break;
+            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); alert.showAndWait();
+                primaryStage.toBack();
+                UrFace.UrFMenu();
+            break;
+            case "4": primaryStage.toBack();
+            Admin.SAMenu(); break;
             default: alert.setContentText("Авторизация выполнена успешно."); alert.showAndWait();
         }
 
