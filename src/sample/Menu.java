@@ -22,38 +22,59 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    private static TextField userTextField = new TextField();
-    private static PasswordField pwBox = new PasswordField();
-    private static PasswordField pwBox2 = new PasswordField();
-    private static Button arrow = new Button("→");
-    private static Stage primaryStage = new Stage();
-    private static String name = userTextField.getText(), pass = pwBox.getText();
+    public static TextField userTextField = new TextField();
+    public static TextField userTextFieldAutoriz = new TextField();
+    public static PasswordField pwBoxAutoriz = new PasswordField();
+    public static PasswordField pwBox = new PasswordField();
+    public static PasswordField pwBox2 = new PasswordField();
+    public static Button arrow = new Button("→");
+    public static Stage primaryStage = new Stage();
+    public static String name = userTextField.getText(), pass = pwBox.getText();
     public static RadioButton selection = new RadioButton();
 
 
-    private static void Alert1() {
+    public static void TestAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Авторизация выполнена успешно");
+        alert.setContentText("CurrentLogin" + autorizeme.CurrentLogin + "CurrentPassword"+ autorizeme.CurrentPassword + "CurrentType"+autorizeme.CurrentType);
 
         alert.showAndWait();
     }
 
-    private void Alert2() {
+
+    public static void Alert1() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Потвторите попытку регистрации");
+        switch (autorizeme.CurrentType) {
+            case "1": Worker.AMenu(); break; //запуск меню сотрудника
+            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); break;
+            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); break;
+            default: alert.setContentText("Авторизация выполнена успешно.");
+        }
+
+
 
         alert.showAndWait();
     }
 
-    private static void Alert3() {
+    public static void Alert2() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Такого логина нет среди зарегистрированных");
+
+        alert.showAndWait();
+    }
+
+    public static void Alert3() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
@@ -64,7 +85,7 @@ public class Menu {
         alert.showAndWait();
     }
 
-    private static void Alert4() {
+    public static void Alert4() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
@@ -75,18 +96,18 @@ public class Menu {
         alert.showAndWait();
     }
 
-    private static void Alert5() {
+    public static void Alert5() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Регистрация выполнена успешно.");
+        alert.setContentText("Регистрация выполнена успешно. Для авторизации под данным логином перезапустите программу.");
 
         alert.showAndWait();
     }
 
-    private static void Alert6() {
+    public static void Alert6() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
@@ -97,7 +118,7 @@ public class Menu {
         alert.showAndWait();
     }
 
-    private static void Alert7() {
+    public static void Alert7() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Test Connection");
 
@@ -108,7 +129,16 @@ public class Menu {
         alert.showAndWait();
     }
 
+    public static void Alert8() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
 
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Неверный пароль.");
+
+        alert.showAndWait();
+    }
 
 
     //Первая ФОРМА
@@ -174,9 +204,9 @@ public class Menu {
         grid.add(userName, 0, 24);//добавляем текст в Grid
 
         //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
-        TextField userTextField = new TextField();
-        userTextField.setId("field");
-        grid.add(userTextField, 0, 25);
+
+        userTextFieldAutoriz.setId("field");
+        grid.add(userTextFieldAutoriz, 0, 25);
 
         //LABEL "ПАРОЛЬ"
         Label pw = new Label("Пароль:");
@@ -184,9 +214,9 @@ public class Menu {
         grid.add(pw, 0, 31);
 
         //EDIT "ВВОД ПАРОЛЬ"
-        PasswordField pwBox = new PasswordField();
-        pwBox.setId("field");
-        grid.add(pwBox, 0, 32);
+
+        pwBoxAutoriz.setId("field");
+        grid.add(pwBoxAutoriz, 0, 32);
 
         //КНОПУЛЕЧКА "→"
         Button btn = new Button("→");
@@ -195,6 +225,8 @@ public class Menu {
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(btn);
         grid.add(btn, 1, 36);
+
+        btn.setOnAction(event -> autorizeme.autorizeme());
 
 
         Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
@@ -268,7 +300,6 @@ public class Menu {
             grid.add(pwBox2, 0, 25);
 
 
-
             ToggleGroup group = new ToggleGroup();
             RadioButton yur = new RadioButton("Юридическое лицо");
             RadioButton phis = new RadioButton("Физическое лицо");
@@ -280,19 +311,15 @@ public class Menu {
             yur.setId("yur");
 
 
+            group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
-
-            group.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
-
-                public void changed(ObservableValue<? extends Toggle> changed, Toggle oldValue, Toggle newValue){
+                public void changed(ObservableValue<? extends Toggle> changed, Toggle oldValue, Toggle newValue) {
 
                     // получаем выбранный элемент RadioButton
                     selection = (RadioButton) newValue;
 
                 }
             });
-
-
 
 
             HBox faces = new HBox();
@@ -319,7 +346,7 @@ public class Menu {
 
 
             avtor.setOnAction(event -> Atuoriz());
-            arrow.setOnAction(event->registerme());
+            arrow.setOnAction(event -> registerme.registerme());
 
         } catch (Exception ex) {
             ex.getMessage();
@@ -327,63 +354,7 @@ public class Menu {
     }
 
 
-    public static void backend() {
-        //взять из работы романа проверку логина и пароля
-        // Сама работа на рабочем столе под названием Лабоант - Ассистент
-       /* if (pwBox.getText() != pwBox2.getText()) {
-            arrow.setOnAction(event -> Alert3());
-        }
-        else{*/
-                primaryStage.toBack();
-                Worker.AMenu();
 
-        //}
-    }
-
-    public static String d = "C://FileFolder"; //путь к папке с текстовым файлом (ну пусть будет)
-    public static String f = "C://FileFolder/ImHere.txt"; //пусть к текстовому файлу
-    public static String NewLogin="", NewPassword="", NewGuyType="", NewUser="", line=""; //тут всё очевидно
-
-    public static void registerme() { //метод регистрации в блокнот
-
-        int j=0; // для проверки уникальности логина
-        try (FileWriter writer = new FileWriter(f, true)) { //открываем файл для обновления (потому что аппенд -  тру, был бы фолз, стирал бы всё, что уже есть)
-            NewLogin = userTextField.getText();
-            try (FileReader reader = new FileReader(Menu.f)) {
-                BufferedReader reader1 = new BufferedReader(reader);
-                while (j==0) { //читаем по строке, пока файл не кончился или не найден такой же логин
-                line = reader1.readLine();
-                if (line == null) {j=2;} else { //файл кончился, выходим и смотрим пароль
-                line = line.substring(0, line.indexOf(" "));
-                if (line.equals(NewLogin)) {
-                    j=1; //если логин такой уже есть, выход и вызов соотвествующего алерта
-
-                }  } }
+}
 
 
-            } catch (IOException ex) {
-
-                System.out.println(ex.getMessage());
-            }
-            if (j!=1) { //если проверка на уникальность пройдена
-                NewUser=NewLogin+" "; //запоминаем логин
-                NewPassword=pwBox.getText(); //читаем пароль
-                if (NewPassword.equals("")) {Menu.Alert6();} else {
-                    if (NewPassword.equals(pwBox2.getText())==false) {Menu.Alert3();} else {
-                        NewUser = NewUser + NewPassword + " "; //сравниваем ввод пароля и повтор, если всё хорошо - записываем
-                        NewGuyType=Menu.selection.getId(); //смотрим какая радио кнопка выбрана
-                        if (NewGuyType == null) {Menu.Alert7();} else { //если никакая, то просим выбрать всё-таки
-                        if (NewGuyType == "phis") NewUser=NewUser+2; //если физ. лицо, то записываем тип 2
-                        if (NewGuyType == "yur") NewUser=NewUser+3; //если юр. лицо, то записываем тип 3
-                        writer.write("\n"); // конец строки
-                        writer.write(NewUser); // переносим строку в файл
-                        Menu.Alert5(); //осчастливываем пользователя, что всё получилось
-
-                    } } } } else Menu.Alert4(); // говорим, что такой логин уже есть
-
-        } catch (IOException ex) {
-
-            System.out.println(ex.getMessage());
-        }
-
-    }}
