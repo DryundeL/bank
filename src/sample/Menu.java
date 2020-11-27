@@ -52,7 +52,8 @@ public class Menu {
         // Header Text: null
         alert.setHeaderText(null);
         switch (autorizeme.CurrentType) {
-            case "1": Worker.AMenu(); break; //запуск меню сотрудника
+            case "1": primaryStage.toBack();
+                Worker.AMenu(); break; //запуск меню сотрудника
             case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); alert.showAndWait(); break;
             case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); alert.showAndWait(); break;
             default: alert.setContentText("Авторизация выполнена успешно."); alert.showAndWait();

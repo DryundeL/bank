@@ -40,6 +40,7 @@ public class autorizeme {
                         }
                     }
 
+
                 } else { check=4; matching=3;}   } //если файл изначально пустой, говорим об этом
 
         }
