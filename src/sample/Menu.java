@@ -4,22 +4,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.FileWriter;
 
 public class Menu {
     public static TextField userTextField = new TextField();
@@ -233,7 +228,7 @@ public class Menu {
         grid.add(scenetitle, 0, 11, 1, 1); //добавляем текст в Grid
         //i - столбец, i2 - строка, остальное хз))))
         //LABEL "ИМЯ ПОЛЬЗОВАТЕЛЯ"
-        Label userName = new Label("Имя пользователя:");
+        Label userName = new Label("Логин:");
         userName.setId("user-name"); //для CSS
         grid.add(userName, 0, 24);//добавляем текст в Grid
 
@@ -260,7 +255,14 @@ public class Menu {
         hbBtn.getChildren().add(btn);
         grid.add(btn, 1, 36);
 
-        btn.setOnAction(event -> autorizeme.autorizeme());
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                autorizeme.autorizeme();
+                pwBoxAutoriz.clear();
+                userTextFieldAutoriz.clear();
+            }
+        });
 
 
         Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
@@ -301,7 +303,7 @@ public class Menu {
             //i - столбец, i2 - строка, остальное хз))))
 
             //LABEL "ИМЯ ПОЛЬЗОВАТЕЛЯ"
-            Label userName = new Label("Имя пользователя:");
+            Label userName = new Label("Логин:");
             userName.setId("Label"); //для CSS
             grid.add(userName, 0, 14);//добавляем текст в Grid
 
@@ -380,7 +382,15 @@ public class Menu {
 
 
             avtor.setOnAction(event -> Atuoriz());
-            arrow.setOnAction(event -> registerme.registerme());
+            arrow.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    registerme.registerme();
+                    pwBox.clear();
+                    pwBox2.clear();
+                    userTextField.clear();
+                }
+            });
 
         } catch (Exception ex) {
             ex.getMessage();

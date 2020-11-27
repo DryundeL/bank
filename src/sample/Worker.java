@@ -1,7 +1,10 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,20 +19,19 @@ public class Worker {
     private static Stage primaryStage = new Stage();
     public static void AMenu() {
         GridPane grid = new GridPane();
-
         grid.setHgap(0);
         grid.setVgap(10);
         grid.setPadding(new Insets(30, 30, 29, 30));
-        //  grid.setGridLinesVisible(true);
+        //grid.setGridLinesVisible(true);
 
 
         Image inpstr = new Image  ("file:need.png");
-        ImageView image1= new ImageView(inpstr);
+        ImageView image1= new ImageView(new Image("file:need.png"));
         // GridPane.setMargin(image1, new Insets(100));
         image1.setId("image1");
-        // GridPane.setHalignment(image1, HPos.CENTER);
-        // GridPane.setValignment(image1, VPos.CENTER);
-        grid.add(new ImageView(new Image("file:need.png")), 0, 0);
+        GridPane.setHalignment(image1, HPos.CENTER);
+        GridPane.setValignment(image1, VPos.CENTER);
+        grid.getChildren().add(image1);
 
 
         Label admin = new Label("Сотрудник");
@@ -80,7 +82,13 @@ public class Worker {
         grid.add(func4, 0, 16);
         func3.setMaxWidth(Double.MAX_VALUE);
         GridPane.setHgrow(func4, Priority.ALWAYS);
+        func4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                primaryStage.close();
 
+            }
+        });
 
         Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
 
