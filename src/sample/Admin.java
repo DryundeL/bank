@@ -4,15 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Admin {
@@ -57,7 +61,7 @@ public class Admin {
         grid.add(func1, 0, 10);
         func1.setMaxWidth(Double.MAX_VALUE);
         GridPane.setHgrow(func1, Priority.ALWAYS);
-
+        func1.setOnAction(event->SReg());
 
         Button func2 = new Button("оформить заявку на ипотеку");
         func2.setPrefSize(500, 60);
@@ -98,5 +102,74 @@ public class Admin {
         scene.getStylesheets().add(0, "file:SuperAdminMenu.css"); //подключение CSS
         primaryStage.show();
 
+    }
+    //private static Stage primaryStage = new Stage();
+    public static void SReg() {
+        GridPane grid = new GridPane();   //создание сетки для разметки формы
+        // grid.setGridLinesVisible(true);  //видна/не видна
+        grid.setHgap(0);                   //отступы например между Edit и Label по горизонтали
+        grid.setVgap(10);                   //отступы например между Edit и Label по вертикали
+        grid.setPadding(new Insets(45, 23, 100, 58)); //утсановка отступов от краёв формы
+
+        //КНОПУЛЕЧКА "Авторизация"
+        Button back = new Button("Вернуться");
+        HBox hbbtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
+        back.setId("avtor");
+        hbbtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbbtn.getChildren().add(back);
+        grid.add(back, 1, 0);
+        back.setOnAction(event->SAMenu());
+        //ЗАГОЛОВОК "РЕГИСТРАЦИЯ"
+        Text scenetitle = new Text("Регистрация\nсотрудника");
+        scenetitle.setId("welcome-text");   //для CSS
+        grid.add(scenetitle, 0, 5, 1, 1); //добавляем текст в Grid
+        //i - столбец, i2 - строка, остальное хз))))
+
+        //LABEL "ИМЯ ПОЛЬЗОВАТЕЛЯ"
+        Label userName = new Label("Имя пользователя:");
+        userName.setId("Label"); //для CSS
+        grid.add(userName, 0, 11);//добавляем текст в Grid
+
+        //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
+        TextField userTextField = new TextField();
+        userTextField.setId("field");
+        grid.add(userTextField, 0, 12);
+
+        //LABEL "ПАРОЛЬ"
+        Label pw = new Label("Пароль:");
+        pw.setId("Label");
+        grid.add(pw, 0, 16);
+
+        //EDIT "ВВОД ПАРОЛЬ"
+        PasswordField pwBox = new PasswordField();
+        pwBox.setId("field");
+        grid.add(pwBox, 0, 17);
+
+        //LABEL "ПОВТОР ПАРОЛЬ"
+        Label pwret = new Label("Повторите пароль:");
+        pwret.setId("Label");
+        grid.add(pwret, 0, 21);
+
+        //EDIT "ВВОД ПОВТОР ПАРОЛЬ"
+        PasswordField unic = new PasswordField();
+        unic.setId("field");
+        grid.add(unic, 0, 22);
+
+
+        //КНОПУЛЕЧКА "→"
+        Button arrow = new Button("→");
+        HBox hbBtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
+        arrow.setId("arrow");
+        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn.getChildren().add(arrow);
+        grid.add(arrow, 1, 26);
+
+
+        Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
+
+        primaryStage.setScene(scene); //добавляем scene в stage
+        primaryStage.setTitle("Регистрация"); //название форме (как наказывала Ишкушка)
+        scene.getStylesheets().add(0, "file:SuperRegistration.css"); //подключение CSS
+        primaryStage.show();
     }
 }
