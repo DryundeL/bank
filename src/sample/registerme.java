@@ -33,11 +33,14 @@ public class registerme {
                 System.out.println(ex.getMessage());
             }
             if (j!=1) { //если проверка на уникальность пройдена
-                NewUser=NewLogin+" "; //запоминаем логин
+                if (NewLogin.trim().isEmpty()) {Menu.Alert9();} else {
+                  if (NewLogin.indexOf(" ")!=-1) {Menu.Alert10();} else {
+                NewUser=NewLogin.trim()+" "; //запоминаем логин
                 NewPassword=Menu.pwBox.getText(); //читаем пароль
-                if (NewPassword.equals("")) {Menu.Alert6();} else {
+                if (NewPassword.trim().equals("")) {Menu.Alert6();} else {
+                    if (NewPassword.indexOf(" ")!=-1) {Menu.Alert11();} else {
                     if (NewPassword.equals(Menu.pwBox2.getText())==false) {Menu.Alert3();} else {
-                        NewUser = NewUser + NewPassword + " "; //сравниваем ввод пароля и повтор, если всё хорошо - записываем
+                        NewUser = NewUser + NewPassword.trim() + " "; //сравниваем ввод пароля и повтор, если всё хорошо - записываем
                         NewGuyType=Menu.selection.getId(); //смотрим какая радио кнопка выбрана
                         if (NewGuyType == null) {Menu.Alert7();} else { //если никакая, то просим выбрать всё-таки
                             if (NewGuyType == "phis") NewUser=NewUser+2; //если физ. лицо, то записываем тип 2
@@ -46,7 +49,7 @@ public class registerme {
                             writer.write(NewUser); // переносим строку в файл
                             Menu.Alert5(); //осчастливываем пользователя, что всё получилось
 
-                        } } } } else Menu.Alert4(); // говорим, что такой логин уже есть
+                        } } } } } } } else Menu.Alert4(); // говорим, что такой логин уже есть
 
         } catch (IOException ex) {
 
