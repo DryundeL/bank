@@ -53,14 +53,14 @@ public class Menu {
         alert.setHeaderText(null);
         switch (autorizeme.CurrentType) {
             case "1": Worker.AMenu(); break; //запуск меню сотрудника
-            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); break;
-            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); break;
-            default: alert.setContentText("Авторизация выполнена успешно.");
+            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); alert.showAndWait(); break;
+            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); alert.showAndWait(); break;
+            default: alert.setContentText("Авторизация выполнена успешно."); alert.showAndWait();
         }
 
 
 
-        alert.showAndWait();
+
     }
 
     public static void Alert2() {
@@ -69,7 +69,7 @@ public class Menu {
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Такого логина нет среди зарегистрированных");
+        alert.setContentText("Такого логина нет среди зарегистрированных.");
 
         alert.showAndWait();
     }
@@ -102,7 +102,7 @@ public class Menu {
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Регистрация выполнена успешно. Для авторизации под данным логином перезапустите программу.");
+        alert.setContentText("Регистрация выполнена успешно.");
 
         alert.showAndWait();
     }
@@ -136,6 +136,39 @@ public class Menu {
         // Header Text: null
         alert.setHeaderText(null);
         alert.setContentText("Неверный пароль.");
+
+        alert.showAndWait();
+    }
+
+    public static void Alert9() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Логин не может быть пустым.");
+
+        alert.showAndWait();
+    }
+
+    public static void Alert10() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Логин не может содержать пробелы.");
+
+        alert.showAndWait();
+    }
+
+    public static void Alert11() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Пароль не может содержать пробелы.");
 
         alert.showAndWait();
     }
