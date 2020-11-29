@@ -216,14 +216,14 @@ public class Menu {
         primaryStage.getOnHidden();
 
 
-        btn1.setOnAction(event -> Atuoriz());
+        btn1.setOnAction(event -> Autoriz());
 
 
     }
 
 
     //ВТОРАЯ ФОРМА
-    public static void Atuoriz() {
+    public static void Autoriz() {
         //2 форма
         GridPane grid = new GridPane();   //создание сетки для разметки формы
         // grid.setGridLinesVisible(true);  //видна/не видна
@@ -400,7 +400,7 @@ public class Menu {
             primaryStage.show();
 
 
-            avtor.setOnAction(event -> Atuoriz());
+            avtor.setOnAction(event -> Autoriz());
             arrow.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -408,6 +408,7 @@ public class Menu {
                     pwBox.clear();
                     pwBox2.clear();
                     userTextField.clear();
+                    Menu.Autoriz();
                 }
             });
 

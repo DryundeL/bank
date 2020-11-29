@@ -28,9 +28,9 @@ public class DATABASEregistration {
                                         Menu.Alert7(); //если никакая, то просим выбрать всё-таки
                                     } else {
                                         if (NewGuyType == "phis")
-                                            statement.executeUpdate("INSERT INTO users (login, password, usertype) VALUES ('" + NewLogin + "', '" + NewPassword + "', " + 2 + ")"); //если физ. лицо, то записываем тип 2
+                                            statement.executeUpdate("insert into users (login, password, usertype) VALUES ('" + NewLogin + "', '" + NewPassword + "', " + 2 + ")"); //если физ. лицо, то записываем тип 2
                                         if (NewGuyType == "yur")
-                                            statement.executeUpdate("INSERT INTO users (login, password, usertype) VALUES ('" + NewLogin + "', '" + NewPassword + "', " + 3 + ")"); //если юр. лицо, то записываем тип 3
+                                            statement.executeUpdate("insert into users (login, password, usertype) VALUES ('" + NewLogin + "', '" + NewPassword + "', " + 3 + ")"); //если юр. лицо, то записываем тип 3
                                         Menu.Alert5();
                                     }
                                 } } } } } } else Menu.Alert4();

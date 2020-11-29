@@ -6,7 +6,7 @@ public class DATABASEautorize {
 
     public static String root="root",
             password="root",
-            url="jdbc:mysql://localhost/test?serverTimezone=Europe/Moscow&useSSL=false";
+            url="jdbc:mysql://localhost:3306/test";
     //данные о бд, имя пользователя, пароль, расположение и коррекция бед с часовым поясом
     public static int check=0, matching=0, CurrentType;
 

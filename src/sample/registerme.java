@@ -48,7 +48,7 @@ public class registerme {
                             writer.write("\n"); // конец строки
                             writer.write(NewUser); // переносим строку в файл
                             Menu.Alert5(); //осчастливываем пользователя, что всё получилось
-                            Menu.Atuoriz();
+                            Menu.Autoriz();
 
                         } } } } } } } else Menu.Alert4(); // говорим, что такой логин уже есть
 
