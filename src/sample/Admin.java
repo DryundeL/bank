@@ -7,10 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -20,7 +17,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Admin {
-    private static Stage primaryStage = new Stage();
+
+    public static TextField userTextField = new TextField();
+    public static PasswordField pwBoxAd = new PasswordField();
+    public static PasswordField pwBoxAd2 = new PasswordField();
+    public static Stage primaryStage = new Stage();
+
+
     public static void SAMenu() {
         GridPane grid = new GridPane();
 
@@ -131,7 +134,7 @@ public class Admin {
         grid.add(userName, 0, 11);//добавляем текст в Grid
 
         //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
-        TextField userTextField = new TextField();
+        userTextField = new TextField();
         userTextField.setId("field");
         grid.add(userTextField, 0, 12);
 
@@ -141,9 +144,9 @@ public class Admin {
         grid.add(pw, 0, 16);
 
         //EDIT "ВВОД ПАРОЛЬ"
-        PasswordField pwBox = new PasswordField();
-        pwBox.setId("field");
-        grid.add(pwBox, 0, 17);
+       pwBoxAd = new PasswordField();
+        pwBoxAd.setId("field");
+        grid.add(pwBoxAd, 0, 17);
 
         //LABEL "ПОВТОР ПАРОЛЬ"
         Label pwret = new Label("Повторите пароль:");
@@ -151,9 +154,9 @@ public class Admin {
         grid.add(pwret, 0, 21);
 
         //EDIT "ВВОД ПОВТОР ПАРОЛЬ"
-        PasswordField unic = new PasswordField();
-        unic.setId("field");
-        grid.add(unic, 0, 22);
+        pwBoxAd2 = new PasswordField();
+        pwBoxAd2.setId("field");
+        grid.add(pwBoxAd2, 0, 22);
 
 
         //КНОПУЛЕЧКА "→"
@@ -163,6 +166,16 @@ public class Admin {
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(arrow);
         grid.add(arrow, 1, 26);
+
+        arrow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DATABASEregistration.registerworker();
+                pwBoxAd.clear();
+                pwBoxAd2.clear();
+                userTextField.clear();
+            }
+        });
 
 
         Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene

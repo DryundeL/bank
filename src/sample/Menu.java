@@ -39,6 +39,16 @@ public class Menu {
         alert.showAndWait();
     }
 
+    public static void DatabaseFail() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Test Connection");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Database connection is failed.");
+        alert.showAndWait();
+    }
+
 
     public static void Alert1() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -46,18 +56,18 @@ public class Menu {
 
         // Header Text: null
         alert.setHeaderText(null);
-        switch (autorizeme.CurrentType) {
-            case "1": primaryStage.toBack();
+        switch (DATABASEautorize.CurrentType) {
+            case 1: primaryStage.toBack();
                 Worker.AMenu(); break; //запуск меню сотрудника
-            case "2": alert.setContentText("Авторизация выполнена успешно. Вы физическое лицо."); alert.showAndWait();
+            case 2: alert.showAndWait();
                 primaryStage.toBack();
                 FizFace.FFMenu();
             break;
-            case "3": alert.setContentText("Авторизация выполнена успешно. Вы юридическое лицо."); alert.showAndWait();
+            case 3: alert.showAndWait();
                 primaryStage.toBack();
                 UrFace.UrFMenu();
             break;
-            case "4": primaryStage.toBack();
+            case 4: primaryStage.toBack();
             Admin.SAMenu(); break;
             default: alert.setContentText("Авторизация выполнена успешно."); alert.showAndWait();
         }
@@ -266,7 +276,8 @@ public class Menu {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                autorizeme.autorizeme();
+               // autorizeme.autorizeme();
+                DATABASEautorize.autorizefromdatabase();
                 pwBoxAutoriz.clear();
                 userTextFieldAutoriz.clear();
             }
@@ -393,7 +404,7 @@ public class Menu {
             arrow.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    registerme.registerme();
+                    DATABASEregistration.registrationtodatabase();
                     pwBox.clear();
                     pwBox2.clear();
                     userTextField.clear();
