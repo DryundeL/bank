@@ -402,7 +402,7 @@ public class Menu {
         primaryStage.show();
 
 
-        avtor.setOnAction(event -> primaryStage.close());
+        avtor.setOnAction(event -> Autoriz());
         arrow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
