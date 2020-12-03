@@ -14,8 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.FileWriter;
-
 import static sample.DATABASEregistration.byteArrayToHexString;
 
 public class Menu {
@@ -303,8 +301,6 @@ public class Menu {
 
     //ТРЕТЬЯ ФОРМА МЕНЮ
     public static void r3g() {
-        try (FileWriter fw = new FileWriter("reg.txt", true)) {
-
 
             GridPane grid = new GridPane();   //создание сетки для разметки формы
             // grid.setGridLinesVisible(true);  //видна/не видна
@@ -418,9 +414,7 @@ public class Menu {
                 }
             });
 
-        } catch (Exception ex) {
-            ex.getMessage();
-        }
+
     }
 
 
