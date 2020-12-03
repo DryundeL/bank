@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.FileWriter;
 
+import static sample.DATABASEregistration.byteArrayToHexString;
+
 public class Menu {
     public static TextField userTextField = new TextField();
     public static TextField userTextFieldAutoriz = new TextField();
@@ -26,7 +28,7 @@ public class Menu {
     public static Stage primaryStage = new Stage();
     public static String name = userTextField.getText(), pass = pwBox.getText();
     public static RadioButton selection = new RadioButton();
-
+    public static String hash ="", passw = pwBoxAutoriz.getText();;
 
     public static void TestAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -264,7 +266,11 @@ public class Menu {
 
         pwBoxAutoriz.setId("field");
         grid.add(pwBoxAutoriz, 0, 32);
-
+        try {
+            hash = byteArrayToHexString(DATABASEregistration.computeHash(passw));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //КНОПУЛЕЧКА "→"
         Button btn = new Button("→");
         HBox hbBtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства

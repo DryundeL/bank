@@ -26,7 +26,7 @@ public class DATABASEautorize {
 
                     if (CurrentLogin.equals(Menu.userTextFieldAutoriz.getText().trim())&&matching==0) {
                         //сравниваем логины, если ещё не найден проходящий
-                        if (CurrentPassword.equals(Menu.pwBoxAutoriz.getText().trim())) { //сравниваем пароли
+                        if (DATABASEregistration.hash.equals(Menu.passw.trim())) { //сравниваем пароли
                             matching = 1; //логин и пароль совпали с записанными
                             check = 4;
                             CurrentType = resultSet.getInt(3);
@@ -46,6 +46,8 @@ public class DATABASEautorize {
         catch (SQLException throwables) {
             Menu.DatabaseFail(); //если не получилось подключиться, держим в курсе
             throwables.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         switch (matching) {
