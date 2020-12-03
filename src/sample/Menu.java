@@ -410,7 +410,7 @@ public class Menu {
                 pwBox.clear();
                 pwBox2.clear();
                 userTextField.clear();
-
+                Autoriz();
             }
         });
 
