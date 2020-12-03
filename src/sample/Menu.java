@@ -295,124 +295,124 @@ public class Menu {
         scene.getStylesheets().add(0, "file:ForButtons.css"); //подключение CSS
         primaryStage.show();
 
-        reg.setOnAction(event -> r3g());
+        reg.setOnAction(event ->r3g());
     }
 
 
     //ТРЕТЬЯ ФОРМА МЕНЮ
     public static void r3g() {
 
-            GridPane grid = new GridPane();   //создание сетки для разметки формы
-            // grid.setGridLinesVisible(true);  //видна/не видна
-            // grid.setAlignment(Pos.CENTER); //выравнивание по центру
-            grid.setHgap(0);                   //отступы например между Edit и Label по горизонтали
-            grid.setVgap(10);                   //отступы например между Edit и Label по вертикали
-            grid.setPadding(new Insets(45, 23, 100, 58)); //утсановка отступов от краёв формы
+        GridPane grid = new GridPane();   //создание сетки для разметки формы
+        // grid.setGridLinesVisible(true);  //видна/не видна
+        // grid.setAlignment(Pos.CENTER); //выравнивание по центру
+        grid.setHgap(0);                   //отступы например между Edit и Label по горизонтали
+        grid.setVgap(10);                   //отступы например между Edit и Label по вертикали
+        grid.setPadding(new Insets(45, 23, 100, 58)); //утсановка отступов от краёв формы
 
-            //КНОПУЛЕЧКА "Авторизация"
-            Button avtor = new Button("Авторизация");
-            HBox hbbtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
-            avtor.setId("avtor");
-            hbbtn.setAlignment(Pos.BOTTOM_RIGHT);
-            hbbtn.getChildren().add(avtor);
-            grid.add(avtor, 1, 0);
+        //КНОПУЛЕЧКА "Авторизация"
+        Button avtor = new Button("Авторизация");
+        HBox hbbtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
+        avtor.setId("avtor");
+        hbbtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbbtn.getChildren().add(avtor);
+        grid.add(avtor, 1, 0);
 
-            //ЗАГОЛОВОК "РЕГИСТРАЦИЯ"
-            Text scenetitle = new Text("Регистрация");
-            scenetitle.setId("welcome-text");   //для CSS
-            grid.add(scenetitle, 0, 7, 1, 1); //добавляем текст в Grid
-            //i - столбец, i2 - строка, остальное хз))))
+        //ЗАГОЛОВОК "РЕГИСТРАЦИЯ"
+        Text scenetitle = new Text("Регистрация");
+        scenetitle.setId("welcome-text");   //для CSS
+        grid.add(scenetitle, 0, 7, 1, 1); //добавляем текст в Grid
+        //i - столбец, i2 - строка, остальное хз))))
 
-            //LABEL "ИМЯ ПОЛЬЗОВАТЕЛЯ"
-            Label userName = new Label("Логин:");
-            userName.setId("Label"); //для CSS
-            grid.add(userName, 0, 14);//добавляем текст в Grid
+        //LABEL "ИМЯ ПОЛЬЗОВАТЕЛЯ"
+        Label userName = new Label("Логин:");
+        userName.setId("Label"); //для CSS
+        grid.add(userName, 0, 14);//добавляем текст в Grid
 
-            //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
+        //EDIT "ВВОД ИМЯ ПОЛЬЗОВАТЕЛЯ"
 
-            userTextField.setId("field");
-            grid.add(userTextField, 0, 15);
-            name = userTextField.getText();
-
-
-            //LABEL "ПАРОЛЬ"
-            Label pw = new Label("Пароль:");
-            pw.setId("Label");
-            grid.add(pw, 0, 19);
-
-            //EDIT "ВВОД ПАРОЛЬ"
-
-            pwBox.setId("field");
-            grid.add(pwBox, 0, 20);
-            pass = pwBox.getText();
-
-            //LABEL "ПОВТОРИТЕ ПАРОЛЬ"
-            Label pwret = new Label("Повторите пароль:");
-            pwret.setId("Label");
-            grid.add(pwret, 0, 24);
-
-            //EDIT "ПОВТОР ПАРОЛЬ"
-
-            pwBox2.setId("field");
-            grid.add(pwBox2, 0, 25);
+        userTextField.setId("field");
+        grid.add(userTextField, 0, 15);
+        name = userTextField.getText();
 
 
-            ToggleGroup group = new ToggleGroup();
-            RadioButton yur = new RadioButton("Юридическое лицо");
-            RadioButton phis = new RadioButton("Физическое лицо");
+        //LABEL "ПАРОЛЬ"
+        Label pw = new Label("Пароль:");
+        pw.setId("Label");
+        grid.add(pw, 0, 19);
+
+        //EDIT "ВВОД ПАРОЛЬ"
+
+        pwBox.setId("field");
+        grid.add(pwBox, 0, 20);
+        pass = pwBox.getText();
+
+        //LABEL "ПОВТОРИТЕ ПАРОЛЬ"
+        Label pwret = new Label("Повторите пароль:");
+        pwret.setId("Label");
+        grid.add(pwret, 0, 24);
+
+        //EDIT "ПОВТОР ПАРОЛЬ"
+
+        pwBox2.setId("field");
+        grid.add(pwBox2, 0, 25);
 
 
-            phis.setToggleGroup(group);
-            phis.setId("phis");
-            yur.setToggleGroup(group);
-            yur.setId("yur");
+        ToggleGroup group = new ToggleGroup();
+        RadioButton yur = new RadioButton("Юридическое лицо");
+        RadioButton phis = new RadioButton("Физическое лицо");
 
 
-            group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-
-                public void changed(ObservableValue<? extends Toggle> changed, Toggle oldValue, Toggle newValue) {
-
-                    // получаем выбранный элемент RadioButton
-                    selection = (RadioButton) newValue;
-
-                }
-            });
+        phis.setToggleGroup(group);
+        phis.setId("phis");
+        yur.setToggleGroup(group);
+        yur.setId("yur");
 
 
-            HBox faces = new HBox();
-            faces.setSpacing(25);
-            faces.getChildren().addAll(yur, phis);
-            grid.add(faces, 0, 27);
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+
+            public void changed(ObservableValue<? extends Toggle> changed, Toggle oldValue, Toggle newValue) {
+
+                // получаем выбранный элемент RadioButton
+                selection = (RadioButton) newValue;
+
+            }
+        });
 
 
-            //КНОПУЛЕЧКА "→"
-
-            HBox hbBtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
-            arrow.setId("arrow");
-            hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-            hbBtn.getChildren().add(arrow);
-            grid.add(arrow, 1, 30);
+        HBox faces = new HBox();
+        faces.setSpacing(25);
+        faces.getChildren().addAll(yur, phis);
+        grid.add(faces, 0, 27);
 
 
-            Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
+        //КНОПУЛЕЧКА "→"
 
-            primaryStage.setScene(scene); //добавляем scene в stage
-            primaryStage.setTitle("Регистрация"); //название форме (как наказывала Ишкушка)
-            scene.getStylesheets().add(0, "file:Registration.css"); //подключение CSS
-            primaryStage.show();
+        HBox hbBtn = new HBox(100); //поместить в контейнер HBox, но это больше для удобства
+        arrow.setId("arrow");
+        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn.getChildren().add(arrow);
+        grid.add(arrow, 1, 30);
 
 
-            avtor.setOnAction(event -> Autoriz());
-            arrow.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    DATABASEregistration.registrationtodatabase();
-                    pwBox.clear();
-                    pwBox2.clear();
-                    userTextField.clear();
-                    Menu.Autoriz();
-                }
-            });
+        Scene scene = new Scene(grid, 450, 700); //добавляем Grid в Scene
+
+        primaryStage.setScene(scene); //добавляем scene в stage
+        primaryStage.setTitle("Регистрация"); //название форме (как наказывала Ишкушка)
+        scene.getStylesheets().add(0, "file:Registration.css"); //подключение CSS
+        primaryStage.show();
+
+
+        avtor.setOnAction(event -> primaryStage.close());
+        arrow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DATABASEregistration.registrationtodatabase();
+                pwBox.clear();
+                pwBox2.clear();
+                userTextField.clear();
+
+            }
+        });
 
 
     }
